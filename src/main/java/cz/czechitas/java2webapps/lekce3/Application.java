@@ -1,4 +1,4 @@
-package cz.czechitas.java2webapps.lekce2;
+package cz.czechitas.java2webapps.lekce3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
