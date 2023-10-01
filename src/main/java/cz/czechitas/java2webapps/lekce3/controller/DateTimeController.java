@@ -12,7 +12,7 @@ import java.util.Locale;
 /**
  * Kontroler, který obsahuje dvě metody. Spring kontroler sám vytvoří a zvaolá správnou metodu v závislosti na tom, kterou adresu prohlížeč volá.
  *
- * Adresa {@code /} není pokrytá žádnou metodou kontroleru. Spring se v tom případě pokusí najít soubor {@code src/main/resources/static/index.html}
+ * Adresa {@code /} není pokrytá žádnou metodou kontroleru. Spring se v tom případě pokusí najít soubor {@code src/main/resources/static/index.ftlh}
  * a odeslat prohlížeči ten. V našem projektu takový soubor je, tím pádem se na úvodní obrazovce zobrazí příslušná úvodní stránka.
  *
  * @author Filip Jirsák
@@ -40,13 +40,8 @@ public class DateTimeController {
    * @return Sdružený objekt obsahující model a informace o view.
    */
   @GetMapping("/datum")
-  public ModelAndView datum() {
-    //Vytvoříme si sdružený objekt pro model a view. Použijeme view „datum“, tedy šablonu v souboru „src/main/resources/templates/datum.ftlh“.
-    ModelAndView result = new ModelAndView("datum");
-    //Do modelu pod klíčem „datum“ vložíme aktuální datum zformátované dle českých zvyklostí.
-    result.addObject("datum", LocalDate.now().format(DATE_FORMATTER));
-    //Sdružený objekt vrátíme z metody, Spring jej vezme a zavolá příslušnou Thymeleaf šablonu a předá jí data z našeho modelu.
-    return result;
+  public String datum() {
+    return "index";
   }
 
   /**
@@ -55,12 +50,7 @@ public class DateTimeController {
    * @return Sdružený objekt obsahující model a informace o view.
    */
   @GetMapping("/cas")
-  public ModelAndView cas() {
-    //Vytvoříme si sdružený objekt pro model a view. Použijeme view „datum“, tedy šablonu v souboru „src/main/resources/templates/datum.ftlh“.
-    ModelAndView result = new ModelAndView("cas");
-    //Do modelu pod klíčem „datum“ vložíme aktuální čas zformátovaný dle českých zvyklostí.
-    result.addObject("cas", LocalTime.now().format(TIME_FORMATTER));
-    //Sdružený objekt vrátíme z metody, Spring jej vezme a zavolá příslušnou Thymeleaf šablonu a předá jí data z našeho modelu.
-    return result;
+  public String cas() {
+    return "index";
   }
 }
